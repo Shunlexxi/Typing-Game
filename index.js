@@ -1,4 +1,5 @@
 const quotes = [
+	'I am a fighter! Give me the strength for the fight and the heart to keep fighting.',
 	'When you have eliminated the impossible, whatever remains, however improbable, must be the truth.',
 	'There is nothing more deceptive than an obvious fact.',
 	'I ought to know by this time that when a fact appears to be opposed to a long train of deductions it invariably proves to be capable of bearing some other interpretation.',
@@ -6,6 +7,7 @@ const quotes = [
 	'What one man can invent another can discover.',
 	'Nothing clears up a case so much as stating it to another person.',
 	'Education never ends, Watson. It is a series of lessons, with the greatest for the last.',
+	'Not making a decision is a big damn decision.'
 ];
 
 // array for storing the words of the current challenge
@@ -63,8 +65,8 @@ typedValueElement.addEventListener('input', (e) => {
 		// Display success
 		const elapsedTime = new Date().getTime() - startTime;
 		const message = `CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`;
-		//alert(`CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`);
-		messageElement.innerText = message;
+		alert(`CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`);
+		//messageElement.innerText = message;
 		
 		typedValueElement.blur();
 		typedValueElement.disabled = true;
