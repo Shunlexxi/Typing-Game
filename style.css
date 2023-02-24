@@ -1,7 +1,8 @@
 body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
-    background: linear-gradient(#035e2c,#f1f1f1);
+    /*background: linear-gradient(#035e2c,#f1f1f1);*/
+    background-color: #222222;
     background-repeat: no-repeat;
     margin: 1px 0px 100% 0px;
     
@@ -14,11 +15,13 @@ h1 {
 
 #intro {
     color: #fff;
+    font-size: large;
 }
 
 #quote {
-    color: #f04f4f;
+    color: #9e6bff;
     font-size: large;
+    padding: 5px;
 }
 
 #message {
@@ -42,6 +45,7 @@ h1 {
 #start {
     background-color: rgb(58, 241, 58);
     border: 0px;
-    color: #fff;
+    color: #000;
     padding: 8px 20px;
+    font-size: large;
 }
