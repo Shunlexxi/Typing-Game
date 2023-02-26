@@ -11,15 +11,25 @@
 <body>
     <h1>Typing Game</h1>
     <p id="intro">Practice your typing skill with quotes</p>
+
+    <div id="popup">
+        <span id="exit">&times;</span>
+        <div id="score"></div>
+    </div>
+
     <!--This will display the quote-->
     <p id="quote"></p>
-    <!--This will display any status message-->
+    <!--This will display any status message
     <p id="message"></p>
+    -->
+    
     <div>
         <!--Taking user input; each word of the quote-->
         <input type="text" aria-label="current word" id="typed-value"/>
         <!--Start Game Control-->
         <button type="button" id="start">Start</button>
+        
+
     </div>
 </body>
 <script src="index.js"></script>

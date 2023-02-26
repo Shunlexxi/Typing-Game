@@ -1,3 +1,4 @@
+// array of quotes
 const quotes = [
 	'I am a fighter! Give me the strength for the fight and the heart to keep fighting.',
 	'When you have eliminated the impossible, whatever remains, however improbable, must be the truth.',
@@ -19,9 +20,26 @@ let startTime = Date.now();
 
 // grab UI items
 const quoteElement = document.getElementById('quote');
-const messageElement = document.getElementById('message')
 const typedValueElement = document.getElementById('typed-value');
+let popUp = document.getElementById('popup');
+const exit = document.getElementById('exit');
+const score = document.getElementById('score');
 
+// Closes modal When the user clicks X
+exit.onclick = function close(){
+	popUp.style.display = "none";
+}
+
+//TODO
+// When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(e) {
+// 	if (e.target == popUp) {
+// 	  popUp.style.display = "none";
+// 	  console.log('close popup?')
+// 	}
+//   }
+
+// Start event
 document.getElementById('start').addEventListener('click', function () {
 	// get a quote
 	const quoteIndex = Math.floor(Math.random() * quotes.length);
@@ -38,41 +56,45 @@ document.getElementById('start').addEventListener('click', function () {
 	quoteElement.innerHTML = spanWords.join('');
 	// Highlight the first word
 	quoteElement.childNodes[0].className = 'highlight';
-	// Clear any prior messages
-	messageElement.innerText = '';
 
-	// Setup the textbox
 	// Clear the textbox
 	typedValueElement.value = '';
 	// Enabling typedValueElement
 	typedValueElement.disabled = false;
 	// set focus
 	typedValueElement.focus();
-	// set the event handler
 
 	// Start the timer
 	startTime = new Date().getTime();
 });
 
+// input 
 typedValueElement.addEventListener('input', (e) => {
 	// Get the current word
 	const currentWord = words[wordIndex];
 	// get the current value
 	const typedValue = typedValueElement.value;
 
+	//if word is correct & it is the last in sentence 
 	if (typedValue === currentWord && wordIndex === words.length - 1) {
 		// end of quote
 		// Display success
 		const elapsedTime = new Date().getTime() - startTime;
 		const message = `CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`;
-		alert(`CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`);
-		//messageElement.innerText = message;
 		
+		//removing focus and blurring typeValueElement
 		typedValueElement.blur();
 		typedValueElement.disabled = true;
 		
-
-	} else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) {
+		// saving score
+		score.innerText = message;
+		
+		//displaying popUp (score)
+		popUp.style.display = "block";	
+	}
+	
+	// if word is correct but not last word in sentence 
+	else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) {
 		// end of word
 		// clear the typedValueElement for the new word
 		typedValueElement.value = '';
@@ -84,11 +106,16 @@ typedValueElement.addEventListener('input', (e) => {
 		}
 		// highlight the new word
 		quoteElement.childNodes[wordIndex].className = 'highlight';
-	} else if (currentWord.startsWith(typedValue)) {
-		// currently correct
+	} 
+
+	// if currently correct
+	else if (currentWord.startsWith(typedValue)) {
 		// highlight the next word
 		typedValueElement.className = '';
-	} else {
+	} 
+	
+	// else - incorrect word
+	else {
 		// error state
 		typedValueElement.className = 'error';
 	}
