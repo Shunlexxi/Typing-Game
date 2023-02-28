@@ -30,14 +30,10 @@ exit.onclick = function close(){
 	popUp.style.display = "none";
 }
 
-//TODO
 // When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(e) {
-// 	if (e.target == popUp) {
-// 	  popUp.style.display = "none";
-// 	  console.log('close popup?')
-// 	}
-//   }
+window.addEventListener("click", function (event) {	
+		popUp.style.display = "none";
+})
 
 // Start event
 document.getElementById('start').addEventListener('click', function () {
@@ -91,6 +87,22 @@ typedValueElement.addEventListener('input', (e) => {
 		
 		//displaying popUp (score)
 		popUp.style.display = "block";	
+
+		//checking if localStorage is empty
+		if (!localStorage.highScore)
+		{
+			//setting localStorage to elapsed time
+			localStorage.setItem('highScore', elapsedTime);
+		}
+		
+		if (elapsedTime < localStorage.highScore)
+		{
+			//upadte highScore
+			localStorage.setItem('highScore', elapsedTime);
+			// alert new highScore
+			alert("Tada! New high score reached.");
+
+		}
 	}
 	
 	// if word is correct but not last word in sentence 
