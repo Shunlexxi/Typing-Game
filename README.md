@@ -1,6 +1,10 @@
 # Typing Game
 Improve your Typing speed
 
+# Demo
+
+
+# Snapshot 
 ![Typing-Game](https://user-images.githubusercontent.com/51166816/221320553-0d5b1cda-73ef-40cb-80ca-4c4ecc4d6802.PNG)
 
 # Introduction
